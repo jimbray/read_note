@@ -10,4 +10,6 @@ AndroidLangTool[https://github.com/hamsterksu/AndroidLangTool]
 这个工具支持将项目中的string.xml 当然是多国的，直接导出为xls 文件，内容为 多国语言并排显示，而且还排好了顺序。
 直接对照翻译就可以了！！ 还支持导入功能。
 
-简直就是神器啊！ Android国际化必备工具!强烈推荐
+简直就是神器啊！ Android国际化必备工具!强烈推荐!
+还有 eclipse的插件呢！
+
