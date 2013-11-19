@@ -15,9 +15,10 @@ android.R.anim.accelerate_interpolator 就是一個插補器
 	加速插補器: android.R.anim.accelerate_interpolator
 	減速插補器：android.R.anim.decelerate_interpolator
 	先加速后減速插補器：accelerate_decelerate_interpolator
-	前回彈插補器：android.R.anim.anticipate_interpolator
-	後回彈插補器：android.R.anim.overshoot_interpolator
-	前後都彈插補器：android.R.anim.anticipate_overshoot_interpolator
+	先前翻一下插補器：android.R.anim.anticipate_interpolator
+	到了越過一下插補器：android.R.anim.overshoot_interpolator
+	前後都越過彈插補器：android.R.anim.anticipate_overshoot_interpolator
+	回彈插補器：android.R.anim.bounce_interpolator
 	`
 
 名字不太官方，純粹做個記錄。通俗易懂，哈哈~
