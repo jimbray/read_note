@@ -56,3 +56,4 @@
 
 應該為 **14  ！！！*切記切記！！***
 搞定收工
+已发布至 [Jimbray](http://1.jimblog.sinaapp.com/?p=77)

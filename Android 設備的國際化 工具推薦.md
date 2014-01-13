@@ -12,4 +12,5 @@ AndroidLangTool[https://github.com/hamsterksu/AndroidLangTool]
 
 简直就是神器啊！ Android国际化必备工具!强烈推荐!
 还有 eclipse的插件呢！
+已发布至 [Jimbray](http://1.jimblog.sinaapp.com/?p=72)
 
