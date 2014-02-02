@@ -31,3 +31,4 @@
 
 据说是绘图问题。这个我还没有看到。
 担心的同学请自行钻研。
+已发布至 [Jimbray](http://1.jimblog.sinaapp.com/?p=93)
