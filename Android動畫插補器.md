@@ -22,3 +22,4 @@ android.R.anim.accelerate_interpolator 就是一個插補器
 	`
 
 名字不太官方，純粹做個記錄。通俗易懂，哈哈~
+已发布:http://1.jimblog.sinaapp.com/?p=89
