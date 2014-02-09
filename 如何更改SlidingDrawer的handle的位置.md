@@ -77,3 +77,5 @@ SlidingDrawer是Android中的一个抽屉效果，既然是抽屉，就会有把
 
 这样，就能真正地改变handle的位置，不管是看到的还是使用到的范围，都没有第一种方案的问题了。
 所以，推荐使用第二种方案
+
+已发布至 [Jimbray](http://1.jimblog.sinaapp.com/?p=96)
