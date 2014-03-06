@@ -41,6 +41,7 @@ from D:/personal/git/faplayer/faplayer/jni/vlc/src/libvlc-modul                 
 问题：D:/personal/git/faplayer/faplayer/jni/vlc/modules/codec/libass.c:518:67: error:                                                                                                                            unknown type name 'ASS_Image'
 
 解决：
+jni/vlc/modules/codec/Android.mk
 25行
 
 	```
