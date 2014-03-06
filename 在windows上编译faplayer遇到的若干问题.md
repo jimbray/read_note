@@ -63,3 +63,10 @@ from D:/personal/git/faplayer/faplayer/jni/vlc/src/libvlc-modul                 
     $(EXTROOT)/libass/libass
 
 最后一行
+
+jni/vlc/modules/codec/libass.c
+
+	#include <ass/ass.h>
+修改为
+
+	#include <ass.h>
