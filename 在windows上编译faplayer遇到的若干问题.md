@@ -111,4 +111,33 @@ make: *** [/cygdrive/d/personal/git/faplayer/faplayer/obj/local/armeabi-v7a/liba
     $(FF_AVCODEC_SRC_1) \
     $(FF_AVCODEC_SRC_2)
 
-OK!继续往下编译！
+OK!继续往下编译！还是出错！
+[解决编译faplayer出现的一揽子问题](http://blog.csdn.net/chao56789/article/details/8817298) 分段编译.a文件解决argument list too long 的问题
+既然已经编完了 libavcodec.a文件 
+就把ext/ffmpeg/Android.mk 的相关模块去除
+
+	LOCAL_ARM_MODE := arm
+	ifeq ($(BUILD_WITH_NEON),1)
+	LOCAL_ARM_NEON := true
+	endif
+
+	LOCAL_MODULE := avcodec
+
+	LOCAL_C_INCLUDES += \
+    $(LOCAL_PATH) \
+    $(LOCAL_PATH)/avcodec
+
+	LOCAL_CFLAGS += $(FF_CFLAGS)
+
+	LOCAL_SRC_FILES := \
+    $(FF_AVCODEC_SRC_1) \
+    $(FF_AVCODEC_SRC_2)
+
+	ifeq ($(BUILD_WITH_NEON),1)
+	LOCAL_CFLAGS += -DHAVE_NEON=1
+	LOCAL_SRC_FILES += $(FF_AVCODEC_NEON_SRC)
+	else
+	LOCAL_CFLAGS += -DHAVE_NEON=0
+	endif
+
+	include $(BUILD_STATIC_LIBRARY)
