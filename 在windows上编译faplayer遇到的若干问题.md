@@ -71,3 +71,44 @@ jni/vlc/modules/codec/libass.c
 修改为
 
 	#include <ass.h>
+-----------------------------------------------------------------------------------
+
+问题：make: execvp: /cygdrive/d/android/android-ndk-r8d/toolchains/arm-linux-androideabi-4.6/prebuilt/windows/bin/arm-linux-androideabi-ar: Argument list too long
+/cygdrive/d/android/android-ndk-r8d/build/core/build-binary.mk:385: recipe for target `/cygdrive/d/personal/git/faplayer/faplayer/obj/local/armeabi-v7a/libavcodec.a' failed
+make: *** [/cygdrive/d/personal/git/faplayer/faplayer/obj/local/armeabi-v7a/libavcodec.a] Error 127
+
+网络查找一下原因：[Cygwin，NDK编译动态库时报Argument list too long错误](http://blog.csdn.net/xulaoban/article/details/8926185)
+原因是：LOCAL_SRC_FILES变量的参数太长。就是直接赋值了太多了源文件，如xx1.cpp xx2.cpp ...，过多导致的。可以将其源文件按类型分开后，在赋值就ok了。比如A1 = xx1.cpp xx2.cpp ...   A2 = xx3.cpp ,xx4.cpp ... 等等。
+接下来就是寻找这个LOCAL_SRC_FILES 的位置所在
+
+最后在jni/ext/ffmpeg/Android.mk中找到792行
+
+	include $(CLEAR_VARS)
+
+	LOCAL_ARM_MODE := arm
+	ifeq ($(BUILD_WITH_NEON),1)
+	LOCAL_ARM_NEON := true
+	endif
+
+	LOCAL_MODULE := avcodec
+
+	LOCAL_C_INCLUDES += \
+    	$(LOCAL_PATH) \
+    	$(LOCAL_PATH)/avcodec
+
+	LOCAL_CFLAGS += $(FF_CFLAGS)
+
+	LOCAL_SRC_FILES := \
+    	$(FF_AVCODEC_SRC) 
+
+看了下，确实这个FF_AVCODEC_SRC 很长！
+果断分两截！
+以libavcodec/mpeg4video_parser.c 文件为断点
+
+分两截，修改后
+
+	LOCAL_SRC_FILES := \
+    $(FF_AVCODEC_SRC_1) \
+    $(FF_AVCODEC_SRC_2)
+
+OK!继续往下编译！
