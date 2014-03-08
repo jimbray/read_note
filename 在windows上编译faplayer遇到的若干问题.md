@@ -150,9 +150,14 @@ D:/git/faplayer/faplayer/jni/ext/ffmpeg/libavcodec/srtdec.c:113:61: error: forma
 D:/git/faplayer/faplayer/jni/ext/ffmpeg/libavcodec/srtdec.c:149:53: error: format not a string literal and no format arguments [-Werror=format-security]
 cc1.exe: some warnings being treated as errors
 
-解决：这个问题属于ndk编译的安全性检查问题，ndk将 这个写法看作是一个错误，其实是可以编译通过的，应该属于一个警告才对。既然错误了，就导致编译中断了。
+解决：这个问题属于使用ndk-r9编译时，这是因为他们两个不完全兼容。项目可能在r8以上编译验证过，r9并未验证。而这个错误，是把warning当作error通知，所以中断
 在Application.mk里面添加下面代码
 
 	APP_CPPFLAGS += -Wno-error=format-security
-就可以解决这个问题了。
+还是没有用，继续报错
+暴力一点：直接修改ndk里面的东西
+在android-ndk-r9/build/core/default-build-commands.mk中，找到 -Werror=format-security，注释掉就可以了
+
+继续编译
+
 --------------------------------------------------------------------
