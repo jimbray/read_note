@@ -141,3 +141,18 @@ OK!继续往下编译！还是出错！
 	endif
 
 	include $(BUILD_STATIC_LIBRARY)
+
+上面这个问题跟编译环境相关，不一定会出现的
+-------------------------------------------------------------
+
+问题 ：D:/git/faplayer/faplayer/jni/ext/ffmpeg/libavcodec/srtdec.c: In function 'srt_to_ass':
+D:/git/faplayer/faplayer/jni/ext/ffmpeg/libavcodec/srtdec.c:113:61: error: format not a string literal and no format arguments [-Werror=format-security]
+D:/git/faplayer/faplayer/jni/ext/ffmpeg/libavcodec/srtdec.c:149:53: error: format not a string literal and no format arguments [-Werror=format-security]
+cc1.exe: some warnings being treated as errors
+
+解决：这个问题属于ndk编译的安全性检查问题，ndk将 这个写法看作是一个错误，其实是可以编译通过的，应该属于一个警告才对。既然错误了，就导致编译中断了。
+在Application.mk里面添加下面代码
+
+	APP_CPPFLAGS += -Wno-error=format-security
+就可以解决这个问题了。
+--------------------------------------------------------------------
