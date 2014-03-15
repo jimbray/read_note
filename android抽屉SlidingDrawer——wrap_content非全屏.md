@@ -54,3 +54,4 @@ SlidingDrawer的用法比较多，就不说明了。
     	}  
 	}  
 注释：本代码可以直接使用，不需修改，使用是把原来的<SlidingDrawer>标签修改为<packageName.WrapSlidingDrawer>即可。
+已发布至[Jimbray](http://1.jimblog.sinaapp.com/?p=107)
